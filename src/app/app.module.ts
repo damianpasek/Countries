@@ -5,16 +5,22 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
+import { CountryDetailComponent } from './components/country-detail/country-detail.component';
+import {routing} from "./app.routing";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    CountryDetailComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map';
+import {Country} from "../models/country";
 
 @Injectable()
 export class CountriesService {
@@ -15,6 +16,10 @@ export class CountriesService {
 
   getCountriesByName(name: string) {
     return this._http.get('https://restcountries.eu/rest/v2/name/' + name).map(res => res.json());
+  }
+
+  getCountryByCode(code: string) {
+    return this._http.get('https://restcountries.eu/rest/v2/alpha?codes=' + code).map(res => res.json());
   }
 
 }

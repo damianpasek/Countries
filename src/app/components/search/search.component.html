@@ -8,7 +8,9 @@
   <div class="col-md-12">
 
     <div class="panel panel-default" *ngFor="let country of countries">
-      <div class="panel-heading">{{ country.name }}</div>
+      <div class="panel-heading">
+        <a routerLink="/country/{{country.alpha3Code}}">{{ country.name }}</a>
+        </div>
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Languages:</strong>

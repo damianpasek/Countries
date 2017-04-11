@@ -7,4 +7,6 @@ export class Country {
   currencies: Currency[];
   capital: string;
   timezones: string[];
+  alpha3Code: string;
+  latlng: number[];
 }
