@@ -1,0 +1,41 @@
+<div class="row" style="margin-top: 20px; margin-bottom: 40px;">
+  <div class="col-md-12">
+    <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString" (keyup)="searchCountries()">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="panel panel-default" *ngFor="let country of countries">
+      <div class="panel-heading">{{ country.name }}</div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Languages:</strong>
+          <span *ngFor="let language of country.languages">
+            {{ language.name }},
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Currencies: </strong>
+          <span *ngFor="let currency of country.currencies">
+            {{ currency.name }},
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Capital:</strong>
+          <span>
+            {{ country.capital }}
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Timezones:</strong>
+          <span *ngFor="let timezone of country.timezones">
+            {{ timezone }},
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
