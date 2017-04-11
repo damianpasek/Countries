@@ -16,10 +16,12 @@ export class SearchComponent implements OnInit {
 
   searchTypes = [
     {value: "name", name: "Name", default: true},
+    {value: "fullname", name: "Full Name"},
     {value: "currency", name: "Currency"},
     {value: "capital", name: "Capital"},
     {value: "region", name: "Region"},
     {value: "callingcode", name: "Calling Code"},
+    {value: "codeslist", name: "List of Codes"},
     {value: "lang", name: "Language"},
   ];
 

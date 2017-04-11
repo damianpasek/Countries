@@ -8,6 +8,7 @@ export class Country {
   capital: string;
   region: string;
   timezones: string[];
+  alpha2Code: string;
   alpha3Code: string;
   latlng: number[];
 }
