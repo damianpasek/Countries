@@ -1,42 +1,59 @@
 <div class="row" style="margin-top: 20px; margin-bottom: 40px;">
-  <div class="col-md-12">
+  <div class="col-sm-8">
     <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchString" (keyup)="searchCountries()">
+  </div>
+  <div class="col-sm-4">
+    <select class="form-control" [(ngModel)]="searchType" (change)="searchCountries()">
+      <option *ngFor="let option of searchTypes" value="{{ option.value }}" [selected]="option.default == true">{{ option.name }}</option>
+    </select>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
 
-    <div class="panel panel-default" *ngFor="let country of countries">
-      <div class="panel-heading">
-        <a routerLink="/country/{{country.alpha3Code}}">{{ country.name }}</a>
-        </div>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <strong>Languages:</strong>
-          <span *ngFor="let language of country.languages">
-            {{ language.name }},
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Currencies: </strong>
-          <span *ngFor="let currency of country.currencies">
-            {{ currency.name }},
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Capital:</strong>
-          <span>
-            {{ country.capital }}
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Timezones:</strong>
-          <span *ngFor="let timezone of country.timezones">
-            {{ timezone }},
-          </span>
-        </li>
-      </ul>
+    <div *ngIf="!countries">
+      <h2>No results found</h2>
+    </div>
+
+    <div *ngIf="countries">
+      <div class="panel panel-default" *ngFor="let country of countries">
+        <div class="panel-heading">
+          <a routerLink="/country/{{country.alpha3Code}}">{{ country.name }}</a>
+          </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Languages:</strong>
+            <span *ngFor="let language of country.languages">
+              {{ language.name }},
+            </span>
+          </li>
+          <li class="list-group-item">
+            <strong>Currencies: </strong>
+            <span *ngFor="let currency of country.currencies">
+              {{ currency.name }},
+            </span>
+          </li>
+          <li class="list-group-item">
+            <strong>Capital:</strong>
+            <span>
+              {{ country.capital }}
+            </span>
+          </li>
+          <li class="list-group-item">
+            <strong>Region:</strong>
+            <span>
+              {{ country.region }}
+            </span>
+          </li>
+          <li class="list-group-item">
+            <strong>Timezones:</strong>
+            <span *ngFor="let timezone of country.timezones">
+              {{ timezone }},
+            </span>
+          </li>
+        </ul>
+      </div>
     </div>
 
   </div>

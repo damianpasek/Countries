@@ -6,6 +6,7 @@ export class Country {
   languages: Language[];
   currencies: Currency[];
   capital: string;
+  region: string;
   timezones: string[];
   alpha3Code: string;
   latlng: number[];

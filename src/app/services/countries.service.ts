@@ -22,4 +22,8 @@ export class CountriesService {
     return this._http.get('https://restcountries.eu/rest/v2/alpha?codes=' + code).map(res => res.json());
   }
 
+  getCountriesCustom(type: string, text: string) {
+    return this._http.get('https://restcountries.eu/rest/v2/' + type+ '/' + text).map(res => res.json());
+  }
+
 }
