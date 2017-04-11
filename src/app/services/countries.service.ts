@@ -12,10 +12,6 @@ export class CountriesService {
     return this._http.get('https://restcountries.eu/rest/v2/all').map(res => res.json());
   }
 
-  getCountriesByName(name: string) {
-    return this._http.get('https://restcountries.eu/rest/v2/name/' + name).map(res => res.json());
-  }
-
   getCountriesByFullName(name: string) {
     return this._http.get('https://restcountries.eu/rest/v2/name/' + name + '?fullText=true').map(res => res.json());
   }

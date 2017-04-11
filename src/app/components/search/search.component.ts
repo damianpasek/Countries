@@ -35,17 +35,11 @@ export class SearchComponent implements OnInit {
 
   searchCountries() {
     if (this.searchString) {
-      if (!this.searchType) {
-        this._countriesService.getCountriesByName(this.searchString).subscribe(data => {
-          this.countries = data;
-        });
-      } else {
-        this._countriesService.getCountriesCustom(this.searchType, this.searchString).subscribe(data => {
-          this.countries = data;
-        }, error => {
-          this.countries = null;
-        });
-      }
+      this._countriesService.getCountriesCustom(this.searchType, this.searchString).subscribe(data => {
+        this.countries = data;
+      }, error => {
+        this.countries = null;
+      });
     } else {
       this.ngOnInit();
     }
