@@ -30,23 +30,26 @@ export class CountryDetailComponent implements OnInit {
       this.mapUrl = "https://www.google.com/maps/embed/v1/view?key=AIzaSyB7bZLF_D3oHt2iti9-lNUOct_LJXzNsew&center=" +
         this.country.latlng[0] + "," + this.country.latlng[1] + "&zoom=5";
 
-      this.actualTime = CountryDetailComponent.calcTime(this.country.timezones[0]);
-
+      this.actualTime = this.calculateTime(this.parseTimezone(this.country.timezones[0]));
     });
   }
 
-  static calcTime(offset) {
-    let timezone = offset.substring(4);
-    let hours = parseInt(timezone.substring(0, 2));
+  private calculateTime(offset) {
+    let date = new Date();
+    let utc = date.getTime() - (date.getTimezoneOffset() * 60000);
+    let localDate = new Date(utc + (3600000 * offset));
+
+    return localDate;
+  }
+
+  private parseTimezone(_timezone) {
+    let timezone = _timezone.substring(4);
+    let offset = parseInt(timezone.substring(0, 2));
     if (parseInt(timezone.substring(3, 5))) {
-      hours += 0.5;
+      offset += 0.5;
     }
 
-    let d = new Date();
-    let utc = d.getTime() - (d.getTimezoneOffset() * 60000);
-    let nd = new Date(utc + (3600000 * hours));
-
-    return nd.toLocaleString();
+    return offset;
   }
 
 }
